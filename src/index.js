@@ -143,12 +143,11 @@ class Game extends React.Component {
             <input type="radio" name="order"
               id="ascending" value="ascending"
               onClick={this.changeDisplayOrder}
-              checked={this.state.ascOrder ? "checked" : false} />
+              defaultChecked />
             <label htmlFor="ascending">ascending order</label>
             <input type="radio" name="order"
               id="descending" value="descending"
-              onClick={this.changeDisplayOrder}
-              checked={this.state.ascOrder ? false : "checked"}/>
+              onClick={this.changeDisplayOrder} />
             <label htmlFor="descending">descending order</label>
           </div>
         </div>
