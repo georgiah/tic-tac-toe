@@ -28,3 +28,6 @@ This assumes you have `Node.js` and `npm` installed on your machine. If you have
 
 #### Extended to change order of list of moves
 ![Moves can be ordered ascending or descending](assets/order_moves.gif)
+
+#### Extended to highlight the winning row
+![Winning row is highlighted](assets/highlight_row.gif)
