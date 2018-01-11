@@ -22,3 +22,6 @@ This assumes you have `Node.js` and `npm` installed on your machine. If you have
 
 #### Extended to bold the currently selected item in the list of moves
 ![currently selected move is bolded](assets/bold_button.gif)
+
+#### Extended to render the board via nested loops
+![Board component is split into Board and BoardRow](assets/nestedLoops.png)
