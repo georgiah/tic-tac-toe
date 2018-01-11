@@ -101,12 +101,20 @@ class Game extends React.Component {
   }
 
   render() {
-    const history = this.state.history
+    var history = this.state.history
     const current = history[this.state.stepNumber]
     const winner = calculateWinner(current.squares)
     let status
 
+    if (!this.state.ascOrder) {
+      history = history.reverse()
+    }
+
     const moves = history.map((step, move) => {
+      if (!this.state.ascOrder) {
+        move = history.length - 1 - move
+      }
+
       const desc = move ?
         `Go to move #${move},
           (${step.move % 3 + 1},
@@ -126,6 +134,10 @@ class Game extends React.Component {
       status = 'Winner: ' + winner
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
+    }
+
+    if (!this.state.ascOrder) {
+      history = history.reverse()
     }
 
     return (
