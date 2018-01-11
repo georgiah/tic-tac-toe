@@ -49,6 +49,10 @@ ol, ul {
   margin-left: 20px;
 }
 
+.highlight {
+  background-color: #3D9970;
+}
+
 button:focus {
   font-weight: bold;
   outline: 0;
