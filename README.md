@@ -25,3 +25,6 @@ This assumes you have `Node.js` and `npm` installed on your machine. If you have
 
 #### Extended to render the board via nested loops
 ![Board component is split into Board and BoardRow](assets/nestedLoops.png)
+
+#### Extended to change order of list of moves
+![Moves can be ordered ascending or descending](assets/order_moves.gif)
