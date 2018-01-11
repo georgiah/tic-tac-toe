@@ -11,33 +11,47 @@ function Square (props) {
 }
 
 class Board extends React.Component {
+  render() {
+    const boardRows = []
+    for (let i = 0; i < 3; i++) {
+      // key declared as array index order of
+      // items will not change
+      boardRows.push(<BoardRow
+        key={i}
+        squares={this.props.squares}
+        onClick={this.props.onClick}
+        value={i} />)
+    }
+
+    return (
+      <div>
+        {boardRows}
+      </div>
+    );
+  }
+}
+
+class BoardRow extends React.Component {
   renderSquare(i) {
     return (<Square
+      key={i}
       value={this.props.squares[i]}
       onClick={() => this.props.onClick(i)}
     />)
   }
 
-  render() {
+  render () {
+    const rowSquares = []
+    const row = this.props.value
+    for (let i = row * 3; i < 3 * (row + 1); i++) {
+      rowSquares.push(this.renderSquare(i))
+    }
+
     return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+      <div className="board-row">
+        {rowSquares}
       </div>
-    );
+    )
   }
 }
 
@@ -88,7 +102,7 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
       const desc = move ?
         `Go to move # ${move},
-          (${step.move % 3 + 1},  
+          (${step.move % 3 + 1},
           ${Math.floor(step.move / 3) + 1})` :
         'Go to game start'
 
