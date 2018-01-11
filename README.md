@@ -13,3 +13,9 @@ npm start
 ```
 
 This assumes you have `Node.js` and `npm` installed on your machine. If you haven't done this before, you can visit [nodejs.org](https://nodejs.org/en/download) to get set up.
+
+#### Product after finishing tutorial
+![basic tic-tac-toe app](assets/original.gif)
+
+#### Extended to show position of each move
+![position of each move shown](assets/move_displayed.gif)
