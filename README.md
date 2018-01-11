@@ -19,3 +19,6 @@ This assumes you have `Node.js` and `npm` installed on your machine. If you have
 
 #### Extended to show position of each move
 ![position of each move shown](assets/move_displayed.gif)
+
+#### Extended to bold the currently selected item in the list of moves
+![currently selected move is bolded](assets/bold_button.gif)
