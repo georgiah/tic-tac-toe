@@ -1,70 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-
-function Square (props) {
-  const className = `square ${props.style}`
-
-  return (
-    <button className={className} onClick={props.onClick}>
-      {props.value}
-    </button>
-  )
-}
-
-class Board extends React.Component {
-  render() {
-    const boardRows = []
-    for (let i = 0; i < 3; i++) {
-      // key declared as array index order of
-      // items will not change
-      boardRows.push(<BoardRow
-        key={i}
-        squares={this.props.squares}
-        onClick={this.props.onClick}
-        winningRow={this.props.winningRow}
-        value={i} />)
-    }
-
-    return (
-      <div>
-        {boardRows}
-      </div>
-    );
-  }
-}
-
-class BoardRow extends React.Component {
-  renderSquare(i) {
-    var style = ''
-    if (this.props.winningRow) {
-      style = this.props.winningRow.includes(i)
-        ? 'highlight' : ''
-    }
-
-    return (<Square
-      key={i}
-      value={this.props.squares[i]}
-      onClick={() => this.props.onClick(i)}
-      style={style}
-    />)
-  }
-
-  render () {
-    //console.log(this.props.winningRow)
-    const rowSquares = []
-    const row = this.props.value
-    for (let i = row * 3; i < 3 * (row + 1); i++) {
-      rowSquares.push(this.renderSquare(i))
-    }
-
-    return (
-      <div className="board-row">
-        {rowSquares}
-      </div>
-    )
-  }
-}
+import Board from './Board'
 
 class Game extends React.Component {
   constructor (props) {
@@ -117,10 +54,6 @@ class Game extends React.Component {
     const winningRow = calculateWinner(current.squares)
     let status
 
-    if (!this.state.ascOrder) {
-      history = history.reverse()
-    }
-
     const moves = history.map((step, move) => {
       if (!this.state.ascOrder) {
         move = history.length - 1 - move
@@ -145,10 +78,6 @@ class Game extends React.Component {
       status = 'Winner: ' + (this.state.xIsNext ? 'O' : 'X')
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
-    }
-
-    if (!this.state.ascOrder) {
-      history = history.reverse()
     }
 
     return (
